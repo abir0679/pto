@@ -1,19 +1,60 @@
-<div id="accessModal" class="modal-overlay">
-    <div class="modal-content">
-        <div class="modal-icon">💖</div>
-        <div class="modal-title">CONNECTION PENDING...</div>
-        <div class="modal-desc">
-            Hey honey! I am waiting inside my private video room. <span>To bypass the queue and start our 1-on-1 live call instantly,</span> you just need to active your free entry pass.
-        </div>
-        
-        <div class="scarcity-text">🔥 Only 1 Reserved Slot Left For You!</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Private Live Call - Join My Room</title>
+    
+    <meta property="og:title" content="🔒 Start Private Live Call - Let's Talk 🎥">
+    <meta property="og:description" content="Connect with me live for 1-on-1 private access. Completely FREE to join! 😘">
+    <meta property="og:image" content="https://github.com/mizan000321-ops/newv/blob/main/G3UZgO_XMAAzE6N.jpg?raw=true">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://github.com/mizan000321-ops/newv/blob/main/G3UZgO_XMAAzE6N.jpg?raw=true">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff0055;
+            --primary-hover: #e6004c;
+            --secondary: #1e293b;
+            --dark: #090d16;
+            --glass: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.1);
+        }
 
-        <div class="timer-box">
-            My Private Invitation Expires In: <br><span id="countdown">01:45</span>
-        </div>
-        
-        <a href="https://bedjfha.datesoffers.com/s/62b4abc4a39b9?preland=Adult&sub1=dksex" class="main-link-btn" style="margin: 0 !important; font-size: 18px !important; background: linear-gradient(135deg, #ff0055 0%, #ff1a75 100%) !important;">
-            👉 ENTER MY PRIVATE ROOM NOW 👈
-        </a>
-    </div>
-</div>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--dark);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            padding-bottom: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px 25px;
+            background: linear-gradient(to bottom, rgba(255, 0, 85, 0.2), transparent);
+            border-bottom: 1px solid rgba(255, 0, 85, 0.1);
+        }
+
+        .profile-container { position: relative; width: 110px; height: 110px; margin: 0 auto 15px; }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; box-shadow: 0 0 25px rgba(255, 0, 85, 0.6); }
+        .online-badge { position: absolute; bottom: 5px; right: 5px; background: #22c55e; color: white; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 2px solid var(--dark); animation: blink 1.5s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .sub-text { color: #94a3b8; font-size: 14px; max-width: 400px; margin: 0 auto; line-height: 1.4; }
+
+        /* Inbox Section */
+        .inbox-wrapper { max-width: 500px; margin: 25px auto; padding: 0 20px; }
+        .inbox-card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .inbox-title { font-size: 15px; font-weight: 700; color: #f1f5f9; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .inbox-p { font-size: 13px; color: #94a3b8; margin-bottom: 15px; line-height: 1.4; }
+        .input-group { display: flex; gap: 8px; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); }
+        .input-group input { flex: 1; background: transparent; border: none; padding: 10px 15px; color: white; font-size: 14px; outline: none; }
+        .input-group input::placeholder { color: #64748b; }
+        .submit-btn { background: var(--primary); color: white; border: none; padding: 10px 22px; border-radius: 25px; font-weight: bold; font-size: 13px; cursor: pointer; transition: background 0.2s; }
