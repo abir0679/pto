@@ -274,6 +274,82 @@
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
+        /* --- HIGH CONVERTING FAKE LIVE CHAT SECTION --- */
+        .comments-section {
+            max-width: 500px;
+            margin: 40px auto 20px;
+            padding: 0 20px;
+        }
+
+        .comments-header {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .live-count {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .comments-container {
+            max-height: 320px;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+        }
+
+        .comment-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 14px;
+            padding: 12px 15px;
+            border-left: 3px solid var(--primary);
+            animation: slideIn 0.4s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .c-user {
+            font-weight: 700;
+            color: #f1f5f9;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .c-verified {
+            color: #22c55e;
+            font-size: 11px;
+            font-weight: 600;
+            background: rgba(34,197,94,0.1);
+            padding: 1px 6px;
+            border-radius: 10px;
+        }
+
+        .c-text {
+            color: #cbd5e1;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
         /* --- VIP POPUP MODAL STYLES --- */
         .modal-overlay {
             position: fixed;
@@ -377,10 +453,26 @@
         </a>
     </div>
 
+    <div class="comments-section">
+        <div class="comments-header">
+            <span>💬 VIP Streaming Activity</span>
+            <span class="live-count"><span id="userCount">1,412</span> online</span>
+        </div>
+        <div class="comments-container" id="commentsBox">
+            <div class="comment-item">
+                <div class="c-user">Jason_M88 <span class="c-verified">Joined Room ✅</span></div>
+                <div class="c-text">Wow, the 1-on-1 private call interface is incredibly smooth. Glad I registered my profile! 😍</div>
+            </div>
+            <div class="comment-item">
+                <div class="c-user">Mark_Taylor <span class="c-verified">Pending Approval ⏳</span></div>
+                <div class="c-text">Just dropped my registration username in the slot above. Please approve me, beautiful!</div>
+            </div>
+        </div>
+    </div>
+
     <div class="gallery-heading">📸 My Private Album Preview (18 Clips):</div>
     
     <div class="gallery-container">
-        
         <div class="video-card" onclick="openPopup()">
             <div class="thumbnail">
                 <img src="https://github.com/mizan000321-ops/newv/blob/main/G3UZgO_XMAAzE6N.jpg?raw=true" class="thumb-img">
@@ -511,69 +603,4 @@
 
         <div class="video-card" onclick="openPopup()">
             <div class="thumbnail">
-                <img src="https://drive.google.com/thumbnail?id=1swmdmsVnKltCYkzJxRzGfG9Vocb6G5O9" class="thumb-img">
-                <div class="play-btn"><div class="play-triangle"></div></div>
-            </div>
-            <div class="video-info">Private Clip #17</div>
-        </div>
-
-        <div class="video-card" onclick="openPopup()">
-            <div class="thumbnail">
-                <img src="https://drive.google.com/thumbnail?id=1Tnt3gPjiDCdUa5XgXHTcjT8pgutfaRbJ" class="thumb-img">
-                <div class="play-btn"><div class="play-triangle"></div></div>
-            </div>
-            <div class="video-info">Private Clip #18</div>
-        </div>
-
-    </div>
-
-    <div id="vipModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closePopup()">✕</button>
-            <div class="modal-icon">🔒</div>
-            <div class="modal-title">CONNECTION PENDING...</div>
-            <div class="modal-desc">
-                Hey honey! The private live room is completely ready and waiting. <span>Due to network access rules, you just need to activate your free chat profile</span> to bypass the public queue and connect 1-on-1 instantly!
-            </div>
-            
-            <a href="https://bedjfha.datesoffers.com/s/62b4abc4a39b9?preland=Adult&sub1=dksex" class="main-link-btn" style="margin: 0 !important;">
-                🔓 UNLOCK MY PRIVATE PORTAL
-            </a>
-        </div>
-    </div>
-
-    <script>
-        // Inbox submission trick (Angle Shifted)
-        function processUsername() {
-            var name = document.getElementById("usernameInput").value.trim();
-            var statusBox = document.getElementById("statusBox");
-            
-            if(name === "") {
-                statusBox.style.display = "block";
-                statusBox.style.backgroundColor = "#fff5f5";
-                statusBox.style.color = "#ff4d6d";
-                statusBox.style.borderLeft = "4px solid #ff4d6d";
-                statusBox.innerHTML = "⚠️ Please type your name first!";
-                return;
-            }
-            
-            statusBox.style.display = "block";
-            statusBox.style.backgroundColor = "#fffbeb";
-            statusBox.style.color = "#b45309";
-            statusBox.style.borderLeft = "4px solid #f59e0b";
-            
-            // "Device Not Verified" এর পরিবর্তে সফট ও হাই-কনভার্টিং টেক্সট পুশ করা হয়েছে
-            statusBox.innerHTML = "⏳ <strong>Connection Pending for " + name + "...</strong> My private live room is active and waiting! However, network rules require a quick profile setup. Please click the button below to complete your free registration so you can enter my room instantly! 🔒💖";
-        }
-
-        // Popup functions
-        function openPopup() {
-            document.getElementById("vipModal").style.display = "flex";
-        }
-
-        function closePopup() {
-            document.getElementById("vipModal").style.display = "none";
-        }
-    </script>
-</body>
-</html>
+                <img src="
