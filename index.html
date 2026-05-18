@@ -6,7 +6,7 @@
     <title>🔒 Private Live Call - Join My Room</title>
     
     <meta property="og:title" content="🔒 Start Private Live Call - Let's Talk 🎥">
-    <meta property="og:description" content="Connect with me live for 1-on-1 private access. Completely FREE to join tonight! 😘">
+    <meta property="og:description" content="Connect with me live for 1-on-1 private access. Completely FREE to join! 😘">
     <meta property="og:image" content="https://github.com/mizan000321-ops/newv/blob/main/G3UZgO_XMAAzE6N.jpg?raw=true">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -14,7 +14,6 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Premium Dark & Hot-Pink Theme */
         :root {
             --primary: #ff0055;
             --primary-hover: #e6004c;
@@ -31,6 +30,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: #ffffff;
             padding-bottom: 20px;
+            overflow-x: hidden;
         }
 
         /* Top Header */
@@ -77,14 +77,12 @@
         .play-triangle { width: 0; height: 0; border-top: 9px solid transparent; border-left: 15px solid white; border-bottom: 9px solid transparent; margin-left: 5px; }
         .video-info { padding: 10px; font-size: 12px; text-align: center; background: rgba(0, 0, 0, 0.75); font-weight: 600; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.05); }
 
-        /* --- UPDATED: SCROLLABLE COMMENTS SECTION (Removed VIP references) --- */
+        /* Scrollable Comments Section */
         .comments-section { max-width: 800px; margin: 50px auto 20px; padding: 0 20px; }
         .comments-header { font-size: 15px; font-weight: bold; margin-bottom: 15px; color: #f1f5f9; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        
-        /* The scrollable box magic */
         .comments-scroll-box { max-height: 280px; overflow-y: auto; padding-right: 10px; }
 
-        /* Custom Scrollbar Styling */
+        /* Custom Scrollbar */
         .comments-scroll-box::-webkit-scrollbar { width: 6px; }
         .comments-scroll-box::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); border-radius: 10px; }
         .comments-scroll-box::-webkit-scrollbar-thumb { background: rgba(255, 0, 85, 0.5); border-radius: 10px; }
@@ -92,7 +90,7 @@
 
         .comment-item { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 15px; margin-bottom: 12px; border-left: 3px solid var(--primary); }
         .c-user { font-weight: 800; color: #e2e8f0; font-size: 13.5px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; }
-        .c-time { font-size: 11px; color: #22c55e; font-weight: bold; } /* Changed to Green to look like "Live" */
+        .c-time { font-size: 11px; color: #22c55e; font-weight: bold; }
         .c-text { color: #94a3b8; font-size: 13.5px; line-height: 1.5; }
         
         .add-comment { margin-top: 15px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px; }
@@ -112,13 +110,52 @@
         .close-btn:hover { background: rgba(255,255,255,0.2); }
         .modal-icon { font-size: 45px; margin-bottom: 15px; }
         .modal-title { font-size: 22px; font-weight: 800; color: #ffffff; margin-bottom: 10px; }
-        .modal-desc { font-size: 14.5px; color: #cbd5e1; line-height: 1.6; margin-bottom: 25px; }
+        .modal-desc { font-size: 14.5px; color: #cbd5e1; line-height: 1.6; margin-bottom: 15px; }
         .modal-desc span { color: var(--primary); font-weight: bold; }
 
-        @media (max-width: 480px) { .gallery-container { grid-template-columns: repeat(2, 1fr); gap: 10px; } h1 { font-size: 22px; } }
+        /* Real-Time Countdown Timer Style */
+        .timer-box { background: rgba(255, 0, 85, 0.1); border: 1px dashed var(--primary); padding: 8px; border-radius: 10px; font-size: 13px; font-weight: bold; color: #f1f5f9; margin-bottom: 20px; display: inline-block; width: 100%; }
+        .timer-box span { color: var(--primary); font-size: 15px; font-family: monospace; }
+
+        /* System Notification Toast */
+        .toast-notification {
+            position: fixed;
+            bottom: -100px;
+            left: 20px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--primary);
+            border-left: 5px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 10000;
+            transition: bottom 0.5s ease-in-out;
+            max-width: 320px;
+            backdrop-filter: blur(10px);
+        }
+        .toast-active { bottom: 20px; }
+        .toast-icon { color: var(--primary); font-size: 18px; }
+        .toast-body { font-size: 13px; color: #e2e8f0; line-height: 1.4; }
+        .toast-body strong { color: #fff; }
+
+        @media (max-width: 480px) { 
+            .gallery-container { grid-template-columns: repeat(2, 1fr); gap: 10px; } 
+            h1 { font-size: 22px; } 
+            .toast-notification { left: 10px; right: 10px; max-width: none; }
+        }
     </style>
 </head>
 <body>
+
+    <div id="statusToast" class="toast-notification">
+        <div class="toast-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="toast-body" id="toastText">
+            <strong>Security Status:</strong> Encrypted pipeline slot secured.
+        </div>
+    </div>
 
     <div class="header">
         <div class="profile-container">
@@ -172,50 +209,14 @@
 
     <div class="comments-section">
         <div class="comments-header">💬 Recent Live Chat <span style="font-size: 11px; font-weight: normal; margin-left: auto; color: #22c55e;">● 84 Users Online</span></div>
-        
         <div class="comments-scroll-box">
-            
-            <div class="comment-item">
-                <div class="c-user">Jason_M88 <span class="c-time">Just now</span></div>
-                <div class="c-text">Just finished the 1-on-1 private call. OMG you are exactly like the photos, even better! 🔥 Best decision to create my free chat account.</div>
-            </div>
-
-            <div class="comment-item">
-                <div class="c-user">Mark_Taylor <span class="c-time">1 min ago</span></div>
-                <div class="c-text">Wow! The signup took only 1 minute. Waiting for you to approve my username babe! I dropped it above.</div>
-            </div>
-
-            <div class="comment-item">
-                <div class="c-user">Alex_UK <span class="c-time">3 mins ago</span></div>
-                <div class="c-text">The private leaked clips are amazing. I dropped my username above, waiting for you to come live again tonight! 😍</div>
-            </div>
-
-            <div class="comment-item">
-                <div class="c-user">Chris_P <span class="c-time">8 mins ago</span></div>
-                <div class="c-text">Is the private call really free after registration?</div>
-            </div>
-
-            <div class="comment-item">
-                <div class="c-user">Official Chat <i class="fa-solid fa-check-circle" style="color: var(--primary); font-size: 11px;"></i> <span class="c-time">7 mins ago</span></div>
-                <div class="c-text">@Chris_P Yes honey! Once you create the free chat account and verify your age, the call is completely free. ❤️</div>
-            </div>
-
-            <div class="comment-item">
-                <div class="c-user">Steve_99 <span class="c-time">12 mins ago</span></div>
-                <div class="c-text">Verified my account! The quality of the live stream is insane. Thanks!</div>
-            </div>
-
-            <div class="comment-item">
-                <div class="c-user">David_US <span class="c-time">15 mins ago</span></div>
-                <div class="c-text">Thanks for accepting my request babe! The connection was so smooth and secure. Guys, this private access is totally worth it. ❤️</div>
-            </div>
-
-            <div class="comment-item">
-                <div class="c-user">Mike_Lonely <span class="c-time">22 mins ago</span></div>
-                <div class="c-text">I love the 14th video! You look so gorgeous there. When are we doing the cam-to-cam?</div>
-            </div>
-
-        </div> <div class="add-comment">
+            <div class="comment-item"><div class="c-user">Jason_M88 <span class="c-time">Just now</span></div><div class="c-text">Just finished the 1-on-1 private call. OMG you are exactly like the photos, even better! 🔥 Best decision to create my free chat account.</div></div>
+            <div class="comment-item"><div class="c-user">Mark_Taylor <span class="c-time">1 min ago</span></div><div class="c-text">Wow! The signup took only 1 minute. Waiting for you to approve my username babe! I dropped it above.</div></div>
+            <div class="comment-item"><div class="c-user">Alex_UK <span class="c-time">3 mins ago</span></div><div class="c-text">The private leaked clips are amazing. I dropped my username above, waiting for you to come live again! 😍</div></div>
+            <div class="comment-item"><div class="c-user">Chris_P <span class="c-time">8 mins ago</span></div><div class="c-text">Is the private call really free after registration?</div></div>
+            <div class="comment-item"><div class="c-user">Official Chat <i class="fa-solid fa-check-circle" style="color: var(--primary); font-size: 11px;"></i> <span class="c-time">7 mins ago</span></div><div class="c-text">@Chris_P Yes honey! Once you create the free chat account and verify your age, the call is completely free. ❤️</div></div>
+        </div> 
+        <div class="add-comment">
             <a href="https://bedjfha.datesoffers.com/s/62b4abc4a39b9?preland=Adult&sub1=dksex">Log in to leave a comment</a>
         </div>
     </div>
@@ -229,7 +230,7 @@
         </div>
         <div class="footer-text">
             <strong>100% SECURE & PRIVATE CONNECTION</strong><br><br>
-            By entering this site you swear that you are of legal age in your area to view adult material and that you wish to view such material. All models appearing on this website are 18 years or older.<br><br>
+            By entering this site you swear that you are of legal age in your area to view adult material and that you wish to view such material.<br><br>
             © 2026 Private Live Portal. All rights reserved. DMCA Protected.
         </div>
     </div>
@@ -240,8 +241,11 @@
             <div class="modal-icon">🔒</div>
             <div class="modal-title">Private Room Key Required!</div>
             <div class="modal-desc">
-                You can watch all my private videos and connect with me <span>ONLY after I add you to my Private Access List.</span><br><br>
-                Once you join, you will unlock my everyday routine and <span>daily private live videos!</span> We can connect daily for a personalized 1-on-1 experience. 
+                You can watch all my private videos and connect with me <span>ONLY after I add you to my Private Access List.</span>
+            </div>
+            
+            <div class="timer-box">
+                ⚠️ Reserved slot expires in: <span id="countdown">05:00</span>
             </div>
             
             <a href="https://bedjfha.datesoffers.com/s/62b4abc4a39b9?preland=Adult&sub1=dksex" class="main-link-btn" style="margin: 0 !important;">
@@ -251,6 +255,76 @@
     </div>
 
     <script>
+        let popupShownOnExit = false;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // ১. ৫ সেকেন্ড পর অটোমেটিক পপ-আপ ওপেন হবে
+            setTimeout(() => {
+                openPopup();
+            }, 5000);
+
+            // ২. ডেক্সটপ ট্রাফিকের জন্য Exit-Intent ট্রিগার (ট্যাব বন্ধ করার চেষ্টা করলে পপ-আপ আসবে)
+            document.addEventListener('mouseleave', (e) => {
+                if (e.clientY < 20 && !popupShownOnExit) {
+                    openPopup();
+                    popupShownOnExit = true; 
+                }
+            });
+
+            // ৩. লাইভ কাউন্টডাউন টাইমার স্ক্রিপ্ট (৫ মিনিট)
+            startTimer(300, document.querySelector('#countdown'));
+
+            // ৪. ডাইনামিক সিস্টেম টোস্ট অ্যালার্ট লুপ
+            setupSystemToasts();
+        });
+
+        function openPopup() { 
+            document.getElementById("accessModal").style.display = "flex"; 
+        }
+        
+        function closePopup() { 
+            document.getElementById("accessModal").style.display = "none"; 
+        }
+
+        // কাউন্টডাউন ফাংশন
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration; // লুপ ব্যাক করবে যদি শেষ হয়ে যায়
+                }
+            }, 1000);
+        }
+
+        // সিস্টেম নোটিফিকেশন লুপ
+        function setupSystemToasts() {
+            const toast = document.getElementById('statusToast');
+            const toastText = document.getElementById('toastText');
+            
+            setTimeout(() => { toast.classList.add('toast-active'); }, 2000);
+            setTimeout(() => { toast.classList.remove('toast-active'); }, 7000);
+
+            setTimeout(() => {
+                toastText.innerHTML = `<strong>Server Update:</strong> Room #4 pipeline scale optimization completed.`;
+                toast.classList.add('toast-active');
+            }, 12000);
+            setTimeout(() => { toast.classList.remove('toast-active'); }, 17000);
+
+            setTimeout(() => {
+                toastText.innerHTML = `<strong>SSL Gateway:</strong> 128-bit secure chat tunnel established.`;
+                toast.classList.add('toast-active');
+            }, 22000);
+            setTimeout(() => { toast.classList.remove('toast-active'); }, 27000);
+        }
+
         function processUsername() {
             var name = document.getElementById("usernameInput").value.trim();
             var statusBox = document.getElementById("statusBox");
@@ -259,9 +333,10 @@
             }
             statusBox.style.display = "block"; statusBox.style.backgroundColor = "#fffbeb"; statusBox.style.color = "#b45309"; statusBox.style.borderLeft = "4px solid #f59e0b";
             statusBox.innerHTML = "⏳ <strong>Hi " + name + "!</strong> I received your name. However, your device is not yet verified on our live chat network. Please click the button below to complete your free secure registration so the system can instantly pass your request to my room! ❤️";
+            
+            // নাম সাবমিট করলেও পপ-আপ রি-ডাইরেক্ট বুস্ট করার জন্য ৩ সেকেন্ড পর মডাল আসবে
+            setTimeout(openPopup, 2000);
         }
-        function openPopup() { document.getElementById("accessModal").style.display = "flex"; }
-        function closePopup() { document.getElementById("accessModal").style.display = "none"; }
     </script>
 </body>
 </html>
