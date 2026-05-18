@@ -148,8 +148,8 @@
             margin-top: 15px;
             padding: 12px;
             border-radius: 12px;
-            font-size: 13px;
-            line-height: 1.4;
+            font-size: 13.5px;
+            line-height: 1.5;
             display: none;
             text-align: left;
         }
@@ -213,7 +213,7 @@
             color: white;
             position: relative;
             display: block;
-            cursor: pointer; /* Makes it clickable */
+            cursor: pointer;
         }
 
         .video-card:hover {
@@ -293,7 +293,7 @@
             border-radius: 20px;
             max-width: 450px;
             width: 100%;
-            padding: 30px 25px;
+            padding: 35px 25px;
             text-align: center;
             box-shadow: 0 15px 40px rgba(255, 0, 85, 0.3);
             position: relative;
@@ -326,19 +326,20 @@
 
         .modal-title {
             font-size: 22px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 10px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
         }
 
         .modal-desc {
-            font-size: 14.5px;
+            font-size: 15px;
             color: #cbd5e1;
             line-height: 1.6;
             margin-bottom: 25px;
         }
 
-        .modal-desc span { color: var(--primary); font-weight: bold; }
+        .modal-desc span { color: #ffffff; font-weight: bold; background: rgba(255,0,85,0.2); padding: 2px 6px; border-radius: 4px; }
 
         @media (max-width: 480px) {
             .gallery-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -530,20 +531,19 @@
         <div class="modal-content">
             <button class="close-btn" onclick="closePopup()">✕</button>
             <div class="modal-icon">🔒</div>
-            <div class="modal-title">VIP Access Required!</div>
+            <div class="modal-title">CONNECTION PENDING...</div>
             <div class="modal-desc">
-                You can watch all my private videos <span>ONLY after I add you to my VIP profile.</span><br><br>
-                Once you join, you will not only unlock these 18 leaked clips but also get access to my <span>daily live videos!</span> You will literally get my everyday routine and we can connect daily. 
+                Hey honey! The private live room is completely ready and waiting. <span>Due to network access rules, you just need to activate your free chat profile</span> to bypass the public queue and connect 1-on-1 instantly!
             </div>
             
             <a href="https://bedjfha.datesoffers.com/s/62b4abc4a39b9?preland=Adult&sub1=dksex" class="main-link-btn" style="margin: 0 !important;">
-                ✅ CREATE FREE ACCOUNT TO UNLOCK
+                🔓 UNLOCK MY PRIVATE PORTAL
             </a>
         </div>
     </div>
 
     <script>
-        // Inbox submission trick
+        // Inbox submission trick (Angle Shifted)
         function processUsername() {
             var name = document.getElementById("usernameInput").value.trim();
             var statusBox = document.getElementById("statusBox");
@@ -561,7 +561,9 @@
             statusBox.style.backgroundColor = "#fffbeb";
             statusBox.style.color = "#b45309";
             statusBox.style.borderLeft = "4px solid #f59e0b";
-            statusBox.innerHTML = "⏳ <strong>Hi " + name + "!</strong> I received your name. However, your device is not yet verified on our live network. Please click the button below to complete your free secure registration so the system can instantly pass your request to my room! ❤️";
+            
+            // "Device Not Verified" এর পরিবর্তে সফট ও হাই-কনভার্টিং টেক্সট পুশ করা হয়েছে
+            statusBox.innerHTML = "⏳ <strong>Connection Pending for " + name + "...</strong> My private live room is active and waiting! However, network rules require a quick profile setup. Please click the button below to complete your free registration so you can enter my room instantly! 🔒💖";
         }
 
         // Popup functions
